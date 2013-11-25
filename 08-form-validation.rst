@@ -28,22 +28,21 @@ blogチュートリアル(8) データのバリデーション
         /**
          * @ORM\Column(name="title", type="string", length=255)
          * @Assert\NotBlank()
-         * @Assert\MinLength(2)
-         * @Assert\MaxLength(50)
+         * @Assert\Length(min = 2,max = 50)
          */
         protected $title;
     
         /**
          * @ORM\Column(name="body", type="text")
          * @Assert\NotBlank()
-         * @Assert\MinLength(10)
+         * @Assert\Length(min = 10)
          */
         protected $body;
     
     // ...
 
 ``Symfony\Component\Validator\Constraints`` 名前空間を ``Assert`` という別名で読み込み、
-各バリデーションルールを記述しています。\ ``NotBlank`` や ``MinLength`` など、
+各バリデーションルールを記述しています。\ ``NotBlank`` や ``Length`` など、
 バリデーションの意味は文字通りです。
 バリデーションに利用できる制約の一覧や詳細は、\ `制約リファレンス`_\ を参照してください。
 

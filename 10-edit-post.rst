@@ -42,7 +42,7 @@ Symfonyでページを追加する際の作業パターンは
         public function editAction($id)
         {
             // DBから取得
-            $em = $this->getDoctrine()->getEntityManager();
+            $em = $this->getDoctrine()->getManager();
             $post = $em->find('MyBlogBundle:Post', $id);
             if (!$post) {
                 throw new NotFoundHttpException('The post does not exist.');
@@ -57,7 +57,7 @@ Symfonyでページを追加する際の作業パターンは
             // バリデーション
             $request = $this->getRequest();
             if ('POST' === $request->getMethod()) {
-                $form->bindRequest($request);
+                $form->bind($request);
                 if ($form->isValid()) {
                     // 更新されたエンティティをデータベースに保存
                     $post = $form->getData();

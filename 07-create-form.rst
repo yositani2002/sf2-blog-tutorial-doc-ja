@@ -60,13 +60,13 @@ Postモデル用のフォームの作成
             // バリデーション
             $request = $this->getRequest();
             if ('POST' === $request->getMethod()) {
-                $form->bindRequest($request);
+                $form->bind($request);
                 if ($form->isValid()) {
                     // エンティティを永続化
                     $post = $form->getData();
                     $post->setCreatedAt(new \DateTime());
                     $post->setUpdatedAt(new \DateTime());
-                    $em = $this->getDoctrine()->getEntityManager();
+                    $em = $this->getDoctrine()->getManager();
                     $em->persist($post);
                     $em->flush();
                     return $this->redirect($this->generateUrl('blog_index'));

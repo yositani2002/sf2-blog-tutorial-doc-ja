@@ -89,14 +89,14 @@ Symfony2 で新しくページを作成する場合、主に2つのステップ�
     {
         public function indexAction()
         {
-            $em = $this->getDoctrine()->getEntityManager();
+            $em = $this->getDoctrine()->getManager();
             $posts = $em->getRepository('MyBlogBundle:Post')->findAll();
             return $this->render('MyBlogBundle:Default:index.html.twig', array('posts' => $posts));
         }
 
         public function showAction($id)
         {
-            $em = $this->getDoctrine()->getEntityManager();
+            $em = $this->getDoctrine()->getManager();
             $post = $em->find('MyBlogBundle:Post', $id);
             return $this->render('MyBlogBundle:Default:show.html.twig', array('post' => $post));
         }
